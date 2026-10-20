@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Pokémon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="shopping-cart.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-zinc-800 via-zinc-950 to-zinc-950 font-sans text-zinc-100">
+    <div class="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-start gap-9 px-4 pb-16 pt-8 sm:px-6 lg:grid-cols-3 lg:px-10 lg:pt-12 xl:grid-cols-4">
+        <main class="min-w-0 lg:col-span-2 xl:col-span-3">
+            <p class="mb-4 text-sm text-zinc-500">Actividad 1 · Desarrollo Web en Entorno Cliente</p>
+            <header class="mb-10 flex flex-col sm:flex-row sm:items-center gap-4 lg:gap-5">
+                <div class="flex items-center gap-4">
+                    <div class="grid h-14 w-14 place-items-center rounded-2xl border border-lime-300 bg-lime-300 font-display text-3xl font-bold text-zinc-900 shadow-lg shadow-lime-300/20" aria-hidden="true">P</div>
+                    <div>
+                        <p class="mb-1 text-sm font-bold tracking-widest text-lime-300">POKÉMON MARKET</p>
+                        <h1 class="font-display text-3xl font-bold tracking-tight">Catálogo Pokémon</h1>
+                        <p class="mt-1 text-sm text-zinc-400">Encuentra a tu próximo compañero.</p>
+                    </div>
+                </div>
+                <a href="#cart" class="max-sm:flex-1 sm:ml-auto flex items-center gap-2 rounded-xl bg-lime-300 px-4 py-3 text-sm font-bold text-zinc-900 hover:bg-lime-200 lg:hidden"><span id="cart-mobile-count" class="grid h-8 w-8 min-w-8 place-items-center rounded-full bg-zinc-900 text-sm text-lime-300">0</span> Ver carrito<span class="ml-auto">↓</span></a>
+            </header>
+            <p id="status" class="border-1 rounded-2xl border-2 p-6 border-zinc-700 bg-gradient-to-br from-zinc-800 to-zinc-900 text-lime-300 mb-4">Cargando productos desde la API local...<span class="mt-2 block text-sm text-zinc-300">Esta página necesita un servidor PHP: ejecuta <code>php -S localhost:8000</code> en la carpeta del proyecto y abre <code>http://localhost:8000</code>, no el archivo index.html directamente</span></p>
+            <ul id="products" class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3" aria-label="Catálogo de productos"></ul>
+        </main>
+
+        <aside id="cart" class="flex min-h-96 min-w-0 flex-col rounded-2xl border border-zinc-700 bg-gradient-to-br from-zinc-800 to-zinc-900 p-6 shadow-2xl shadow-black/30 lg:sticky lg:top-7" aria-labelledby="cart-title">
+            <div class="flex items-center justify-between border-b border-zinc-700 pb-5">
+                <div>
+                    <p class="mb-1 text-sm font-bold tracking-widest text-lime-300">TU SELECCIÓN</p>
+                    <h2 id="cart-title" class="font-display text-2xl font-bold tracking-tight">Carrito</h2>
+                </div>
+                <span id="cart-count" class="grid h-8 w-8 place-items-center rounded-full bg-lime-300 text-sm font-bold text-zinc-900">0</span>
+            </div>
+            <ul id="cart-items" class="hidden max-h-80 gap-3 overflow-y-auto py-4"></ul>
+            <p id="cart-empty" class="my-auto text-center text-sm leading-relaxed text-zinc-400">Tu carrito está vacío.<br>¡Añade algún Pokémon!</p>
+            <div class="mt-auto border-t border-zinc-700 pt-5">
+                <div class="mb-4 flex justify-between text-sm text-zinc-300"><span>Total</span><strong id="cart-total" class="font-display text-xl font-bold text-white">0,00 €</strong></div>
+                <button id="checkout-button" class="flex w-full items-center justify-between rounded-xl bg-lime-300 px-4 py-3 text-sm font-bold text-zinc-900 enabled:cursor-pointer enabled:hover:bg-lime-200 disabled:cursor-not-allowed disabled:bg-zinc-700 disabled:text-zinc-400" type="button" disabled>Continuar compra <span aria-hidden="true">→</span></button>
+            </div>
+        </aside>
+    </div>
+    <footer class="mx-auto w-full max-w-screen-2xl px-4 pb-20 sm:px-6 lg:px-10">
+        <section aria-labelledby="documentation-title" class="border-t border-zinc-700 pt-8 text-sm text-zinc-400">
+            <p class="mb-2 text-sm font-bold tracking-widest text-lime-300">SOBRE EL PROYECTO</p>
+            <h2 id="documentation-title" class="mb-6 font-display text-2xl font-bold text-zinc-100">Cómo funciona</h2>
+            <div class="grid gap-8 lg:grid-cols-2">
+                <div>
+                    <h3 class="mb-3 font-display text-lg font-semibold text-zinc-200">Datos y ejecución</h3>
+                    <p class="mb-3">La página consulta <code class="text-lime-300">api.php</code> con <code class="text-lime-300">fetch</code> y <code class="text-lime-300">async/await</code>. La API devuelve 25 Pokémon, su precio, tipo, imagen y stock; cinco están agotados. Las tarjetas se crean desde JavaScript y se estilizan con Tailwind.</p>
+                    <p class="mb-3">Para abrirla, ejecuta <code class="text-lime-300">php -S localhost:8007</code> en esta carpeta y visita <code class="text-lime-300">http://localhost:8007</code>.</p>
+                    <p>El carrito limita las unidades al stock disponible y actualiza el total al añadir, cambiar la cantidad o quitar un producto. Su contenido solo se conserva mientras la página está abierta.</p>
+                </div>
+                <div>
+                    <h3 class="mb-3 font-display text-lg font-semibold text-zinc-200">Funciones y clase ShoppingCart</h3>
+                    <dl class="grid gap-2">
+                        <div><dt class="inline font-semibold text-zinc-200">ShoppingCart.constructor():</dt> <dd class="inline">guarda los productos y la moneda recibidos de la API.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">updateQuantity():</dt> <dd class="inline">añade, cambia o elimina unidades, respetando el stock.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">getProductInfo():</dt> <dd class="inline">devuelve los datos y las unidades de un producto.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">getCart():</dt> <dd class="inline">devuelve los productos seleccionados, la moneda y el total.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">formatPrice():</dt> <dd class="inline">muestra el precio con dos decimales y el símbolo de la moneda.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">createCartItem():</dt> <dd class="inline">crea un producto del carrito y su selector de unidades.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">updateAddButtons():</dt> <dd class="inline">desactiva Añadir cuando se alcanza el stock.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">renderCart():</dt> <dd class="inline">redibuja el carrito, sus contadores y el total.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">addProductToCart():</dt> <dd class="inline">suma una unidad al carrito.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">addProductToCatalog():</dt> <dd class="inline">crea una tarjeta para cada producto del catálogo.</dd></div>
+                        <div><dt class="inline font-semibold text-zinc-200">loadProducts():</dt> <dd class="inline">consulta la API, prepara el carrito y carga el catálogo.</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
