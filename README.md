@@ -16,6 +16,12 @@ La página consulta `api.php` con `fetch` y `async/await`. La API devuelve 25 Po
 
 El carrito limita las unidades al stock disponible y actualiza el total al añadir, cambiar la cantidad o quitar un producto. Su contenido solo se conserva mientras la página está abierta.
 
+## Diseño con Tailwind CSS
+
+La página carga [Tailwind CSS](https://tailwindcss.com/) desde su CDN en `index.html`, sin instalación ni proceso de compilación. Los estilos se aplican mediante clases de utilidad: en el HTML para la estructura de la página y en `script.js` para las tarjetas y los elementos del carrito creados dinámicamente.
+
+Se utilizan clases responsivas para mostrar el carrito a la derecha en pantallas grandes y debajo del catálogo en pantallas pequeñas. Los colores de las etiquetas de tipo Pokémon se eligen en `script.js` según el tipo recibido de la API. En `index.html` también se configuran las fuentes DM Sans y Space Grotesk para usarlas con las clases `font-sans` y `font-display`.
+
 ## Clase ShoppingCart
 
 Gestiona los productos, las cantidades y el total sin acceder al DOM.
