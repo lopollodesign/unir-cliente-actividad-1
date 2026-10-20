@@ -16,14 +16,21 @@ La página consulta `api.php` con `fetch` y `async/await`. La API devuelve 25 Po
 
 El carrito limita las unidades al stock disponible y actualiza el total al añadir, cambiar la cantidad o quitar un producto. Su contenido solo se conserva mientras la página está abierta.
 
-## Funciones y clase ShoppingCart
+## Clase ShoppingCart
 
-| Función o método | Qué hace |
+Gestiona los productos, las cantidades y el total sin acceder al DOM.
+
+| Método | Qué hace |
 | --- | --- |
-| `ShoppingCart.constructor()` | Guarda los productos y la moneda recibidos de la API |
+| `constructor()` | Guarda los productos y la moneda recibidos de la API |
 | `updateQuantity()` | Añade, cambia o elimina unidades, respetando el stock |
 | `getProductInfo()` | Devuelve los datos y las unidades de un producto |
 | `getCart()` | Devuelve los productos seleccionados, la moneda y el total |
+
+## Funciones generales (`script.js`)
+
+| Función | Qué hace |
+| --- | --- |
 | `formatPrice()` | Muestra el precio con dos decimales y el símbolo de la moneda |
 | `createCartItem()` | Crea un producto del carrito y su selector de unidades |
 | `updateAddButtons()` | Desactiva Añadir cuando se alcanza el stock |
