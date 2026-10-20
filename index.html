@@ -59,34 +59,11 @@
         </aside>
     </div>
     <footer class="mx-auto w-full max-w-screen-2xl px-4 pb-20 sm:px-6 lg:px-10">
-        <section aria-labelledby="documentation-title" class="border-t border-zinc-700 pt-8 text-sm text-zinc-400">
-            <p class="mb-2 text-sm font-bold tracking-widest text-lime-300">SOBRE EL PROYECTO</p>
-            <h2 id="documentation-title" class="mb-6 font-display text-2xl font-bold text-zinc-100">Cómo funciona</h2>
-            <div class="grid gap-8 lg:grid-cols-2">
-                <div>
-                    <h3 class="mb-3 font-display text-lg font-semibold text-zinc-200">Datos y ejecución</h3>
-                    <p class="mb-3">La página consulta <code class="text-lime-300">api.php</code> con <code class="text-lime-300">fetch</code> y <code class="text-lime-300">async/await</code>. La API devuelve 25 Pokémon, su precio, tipo, imagen y stock; cinco están agotados. Las tarjetas se crean desde JavaScript y se estilizan con Tailwind.</p>
-                    <p class="mb-3">Para abrirla, ejecuta <code class="text-lime-300">php -S localhost:8007</code> en esta carpeta y visita <code class="text-lime-300">http://localhost:8007</code>.</p>
-                    <p>El carrito limita las unidades al stock disponible y actualiza el total al añadir, cambiar la cantidad o quitar un producto. Su contenido solo se conserva mientras la página está abierta.</p>
-                </div>
-                <div>
-                    <h3 class="mb-3 font-display text-lg font-semibold text-zinc-200">Funciones y clase ShoppingCart</h3>
-                    <dl class="grid gap-2">
-                        <div><dt class="inline font-semibold text-zinc-200">ShoppingCart.constructor():</dt> <dd class="inline">guarda los productos y la moneda recibidos de la API.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">updateQuantity():</dt> <dd class="inline">añade, cambia o elimina unidades, respetando el stock.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">getProductInfo():</dt> <dd class="inline">devuelve los datos y las unidades de un producto.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">getCart():</dt> <dd class="inline">devuelve los productos seleccionados, la moneda y el total.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">formatPrice():</dt> <dd class="inline">muestra el precio con dos decimales y el símbolo de la moneda.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">createCartItem():</dt> <dd class="inline">crea un producto del carrito y su selector de unidades.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">updateAddButtons():</dt> <dd class="inline">desactiva Añadir cuando se alcanza el stock.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">renderCart():</dt> <dd class="inline">redibuja el carrito, sus contadores y el total.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">addProductToCart():</dt> <dd class="inline">suma una unidad al carrito.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">addProductToCatalog():</dt> <dd class="inline">crea una tarjeta para cada producto del catálogo.</dd></div>
-                        <div><dt class="inline font-semibold text-zinc-200">loadProducts():</dt> <dd class="inline">consulta la API, prepara el carrito y carga el catálogo.</dd></div>
-                    </dl>
-                </div>
-            </div>
-        </section>
+        <div class="border-t border-zinc-700 pt-8 text-sm text-zinc-400">
+            <p class="mb-3 font-bold tracking-widest text-lime-300">ACTIVIDAD 1 · DESARROLLO WEB EN ENTORNO CLIENTE</p>
+            <p class="mb-3">Una tienda Pokémon de ejemplo para practicar peticiones a una API, manipulación del DOM y programación orientada a objetos con un carrito de compra.</p>
+            <a href="https://github.com/lopollodesign/unir-cliente-actividad-1" target="_blank" rel="noopener noreferrer" class="font-semibold text-lime-300 underline underline-offset-4 hover:text-lime-200">Ver código y documentación en GitHub →</a>
+        </div>
     </footer>
 </body>
 </html>
